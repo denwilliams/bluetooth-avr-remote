@@ -1,10 +1,17 @@
 #include <SoftwareSerial.h>
-SoftwareSerial BTserial(5,6); // RX | TX
+// this is set for an arduino nano
+// pins D2 & D3 are used for the rotary encorder
+// pin D8 is for the button
+// pin D5 & D6 are for the bluetooth RX and TX
+
+// Swap these pins if rotation works the wrong way
+SoftwareSerial BTserial(6,5); // RX | TX
 char c = ' ';
 
-//these pins can not be changed 2/3 are special pins
-int encoderPin1 = 3;
-int encoderPin2 = 2;
+// these pins can not be changed 2/3 are special pins
+//
+int encoderPin1 = 2;
+int encoderPin2 = 3;
 int encoderSwitchPin = 8;
 int max = 1000;
 
@@ -19,9 +26,9 @@ int lastLSB = 0;
 
 void setup() {
   Serial.begin (9600);
-  BTserial.begin(9600);  
+  BTserial.begin(9600);
 
-  pinMode(encoderPin1, INPUT); 
+  pinMode(encoderPin1, INPUT);
   pinMode(encoderPin2, INPUT);
   pinMode(encoderSwitchPin, INPUT);
 
@@ -30,24 +37,24 @@ void setup() {
   digitalWrite(encoderSwitchPin, HIGH); //turn pullup resistor on
 
   //call updateEncoder() when any high/low changed seen
-  //on interrupt 0 (pin 2), or interrupt 1 (pin 3) 
-  attachInterrupt(0, updateEncoder, CHANGE); 
+  //on interrupt 0 (pin 2), or interrupt 1 (pin 3)
+  attachInterrupt(0, updateEncoder, CHANGE);
   attachInterrupt(1, updateEncoder, CHANGE);
 
   Serial.println("INIT");
   BTserial.println("INIT");
 }
 
-void loop(){ 
+void loop(){
   if (encoderValue != 0) {
     Serial.print("ADJ ");
     Serial.println(encoderValue);
-    
+
     BTserial.print("ADJ ");
     BTserial.println(encoderValue);
-    
+
     encoderValue = 0;
-  }v
+  }
 
   //Do stuff here
   if(digitalRead(encoderSwitchPin)){

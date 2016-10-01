@@ -12,7 +12,7 @@ exports.create = function createPioneerAvr(host) {
   let power = NOT_INITIALIZED;
 
   avr.on('connect', () => {
-    console.log('receiver connected');
+    console.log('receiver connected... querying');
     avr.query();
   });
   avr.on('power', isOn => {
@@ -25,17 +25,18 @@ exports.create = function createPioneerAvr(host) {
   return {
     adjustVolume(amount) {
       // no adjustments until initialized
-      if (volume === NOT_INITIALIZED) return;
+      if (volume === NOT_INITIALIZED) {
+        console.log('NOT initialized');
+        avr.query();
+        return;
+      }
 
       volume += amount;
       avr.volume(volume);
     },
     togglePower() {
-      if (power) {
-        avr.power(false);
-      } else {
-        avr.power(true);
-      }
+      power = !power;
+      avr.power(power);
     }
   };
 }
