@@ -1,0 +1,10 @@
+---
+
+avr:
+    type: yamaha  # yamaha or pioneer
+    host: 192.168.0.123"
+bluetooth: # set to null to disable
+    host: '' # BT address
+    channel: 1
+serial: # set to null to disable
+    port: "/dev/ttyUSB0"

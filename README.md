@@ -1,5 +1,5 @@
-# bluetooth-avr-remote
-Network connected AVR remote control via Blueooth connected Arduino rotary encoder
+# avr-remote
+Network connected AVR remote control via serial OR Blueooth connected Arduino rotary encoder
 
 I use this at home to turn on and adjust the volume of the receiver from another room.
 Only works with Yamaha at the moment, will be adding Pioneer soon.
