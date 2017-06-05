@@ -1,8 +1,6 @@
 const readline = require('readline');
 const MemoryStream = require('memorystream');
-const BluetoothSerialPort = require('bluetooth-serial-port').BluetoothSerialPort;
 
-const btSerial = new BluetoothSerialPort();
 const memStream = new MemoryStream();
 const config = require('./config.json');
 const factor = 4;
@@ -16,6 +14,8 @@ const rl = readline.createInterface({
   input: memStream,
   // output: process.stdout
 });
+
+require('./serial')(memStream);
 
 let avr = null;
 let connectRetry = null;
@@ -53,30 +53,3 @@ rl.on('line', l => {
   }
 });
 
-function onConnectSuccess() {
-  console.log(`[bt] connected to remote: ${remoteHost}`);
-  clearInterval(connectRetry);
-}
-
-function onConnectFail(err) {
-  console.log('[bt] cannot connect', err);
-}
-
-btSerial.on('data', function(buffer) {
-  memStream.write(buffer);
-});
-
-btSerial.on('closed', () => {
-  startConnecting();
-})
-
-function connect() {
-  btSerial.connect(remoteHost, remoteChannel, onConnectSuccess, onConnectFail);
-}
-
-function startConnecting() {
-  connectRetry = setInterval(connect, 60000);
-  connect();
-}
-
-startConnecting();
