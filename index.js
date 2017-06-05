@@ -7,15 +7,16 @@ const factor = 4;
 let diff = 0;
 
 const avrType = config.avr.type;
-const remoteHost = config.remote.host;
-const remoteChannel = config.remote.channel || 1;
+// const remoteHost = config.remote.host;
+// const remoteChannel = config.remote.channel || 1;
 
 const rl = readline.createInterface({
   input: memStream,
   // output: process.stdout
 });
 
-require('./serial')(memStream);
+require('./serial')(memStream, config.serial);
+// require('./btserial')(memStream, config.bluetooth);
 
 let avr = null;
 let connectRetry = null;
