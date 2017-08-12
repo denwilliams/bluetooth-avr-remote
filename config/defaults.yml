@@ -3,11 +3,6 @@
 avr:
     type: yamaha  # yamaha or pioneer
     host: 192.168.0.123"
-bluetooth: # set to null to disable
-    host: '' # BT address
-    channel: 1
-serial: # set to null to disable
-    port: "/dev/ttyUSB0"
 temperature:
     id: "28-80000028c9b1" # ID of DS18B20
     interval: 30000
@@ -18,3 +13,4 @@ encoder:
     leftPin: 5
     rightPin: 6
     buttonPin: 26
+    factor: 4 # must turn this many notches to up the volume
