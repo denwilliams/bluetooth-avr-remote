@@ -13,3 +13,7 @@ temperature:
 lcd:
     device: "/dev/i2c-1"
     address: 0x27
+encoder:
+    leftPin: 5
+    rightPin: 6
+    buttonPin: 26
