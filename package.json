@@ -9,7 +9,10 @@
   "license": "MIT",
   "description": "",
   "dependencies": {
+    "bluebird": "^3.5.0",
+    "i2c": "^0.2.3",
     "loke-config": "^2.0.1",
+    "mc-tempsensor": "^2.0.0",
     "memorystream": "^0.3.1",
     "serialport": "^4.0.7",
     "yamaha-nodejs": "^0.6.0"
