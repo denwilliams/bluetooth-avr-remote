@@ -10,6 +10,7 @@ serial: # set to null to disable
     port: "/dev/ttyUSB0"
 temperature:
     id: "28-80000028c9b1" # ID of DS18B20
+    interval: 30000
 lcd:
     device: "/dev/i2c-1"
     address: 0x27
