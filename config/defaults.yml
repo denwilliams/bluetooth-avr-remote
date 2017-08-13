@@ -12,5 +12,5 @@ lcd:
 encoder:
     leftPin: 5
     rightPin: 6
-    buttonPin: 26
+    buttonPin: 0
     factor: 2 # must turn this many notches to up the volume
