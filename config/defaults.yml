@@ -13,4 +13,4 @@ encoder:
     leftPin: 5
     rightPin: 6
     buttonPin: 0
-    factor: 2 # must turn this many notches to up the volume
+    factor: 4 # must turn this many notches to up the volume
